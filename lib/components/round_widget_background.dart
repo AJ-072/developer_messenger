@@ -3,17 +3,18 @@ import 'package:flutter/material.dart';
 class RoundBorder extends StatelessWidget {
   final Widget child;
   final Color color;
+  final double margin;
 
-  RoundBorder({this.child, this.color, Key key}) : super(key: key);
+  RoundBorder({@required this.child, this.color, this.margin, Key key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 15),
-      width: (size.width * 0.8),
+      margin: EdgeInsets.symmetric(vertical: margin == null ? 0 : margin),
       decoration: BoxDecoration(
-          border: Border.all(color: color, width: 2),
+          border:
+              Border.all(color: color == null ? Colors.white : color, width: 2),
           borderRadius: BorderRadius.circular(30)),
       child: child,
     );

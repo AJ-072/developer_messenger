@@ -7,9 +7,11 @@ class RoundButton extends StatelessWidget {
 
   const RoundButton({Key key, this.onPressed, this.buttonText})
       : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return FillRoundBorder(
+        margin: 15,
         color: Colors.deepOrangeAccent,
         child: TextButton(
           child: Text(

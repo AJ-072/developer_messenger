@@ -12,6 +12,7 @@ class RoundInputText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RoundBorder(
+      margin: 15,
       color: Colors.indigoAccent,
       child: TextFormField(
         textAlignVertical: TextAlignVertical.center,

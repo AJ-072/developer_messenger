@@ -2,37 +2,43 @@ import 'package:developer_messenger/components/round_button.dart';
 import 'package:developer_messenger/components/round_input_text.dart';
 import 'package:developer_messenger/components/round_password_text.dart';
 import 'package:developer_messenger/dashboard/dashboard.dart';
-import 'package:developer_messenger/login/Background.dart';
+import 'package:developer_messenger/login/login_background.dart';
+import 'package:developer_messenger/sign_up/signup.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class Body extends StatelessWidget {
+class LoginBody extends StatelessWidget {
   final Function onPressed;
   final ValueChanged<String> userNameChanged;
   final ValueChanged<String> passwordChanged;
 
-  const Body(
+  const LoginBody(
       {Key key, this.onPressed, this.userNameChanged, this.passwordChanged})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Background(
+    return LoginBackground(
         child: Column(
       children: [
-        Container(
-          width: size.width * 0.7,
-          margin: EdgeInsets.only(bottom: 20),
-          child: Text(
-            "Sign In",
-            style: TextStyle(
-                fontSize: 28, fontWeight: FontWeight.bold, color: Colors.grey),
+        Align(
+          alignment: Alignment.centerLeft,
+          child: Container(
+            margin: EdgeInsets.only(bottom: 20, left: 20),
+            child: Text(
+              "Sign In",
+              textAlign: TextAlign.start,
+              style: TextStyle(
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.indigoAccent),
+            ),
           ),
         ),
         RoundInputText(
           icon: Icons.person,
-          hintText: "username",
+          hintText: "Phone Number",
           onChanged: userNameChanged,
         ),
         RoundPasswordText(
@@ -57,6 +63,20 @@ class Body extends StatelessWidget {
                 fontSize: 14, fontWeight: FontWeight.bold, color: Colors.blue),
           ),
         ),
+        Container(
+            margin: EdgeInsets.only(top: 40),
+            alignment: Alignment.bottomCenter,
+            child: GestureDetector(
+              onTap: () => Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => SignUp())),
+              child: Text(
+                "Not created?SignUp",
+                style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blue),
+              ),
+            )),
       ],
     ));
   }

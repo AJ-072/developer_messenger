@@ -1,4 +1,7 @@
-import 'package:developer_messenger/dashboard/chat_list_item.dart';
+import 'package:developer_messenger/chatbox/ChatBox.dart';
+import 'package:developer_messenger/dashboard/Components/chat_list_tile.dart';
+import 'package:developer_messenger/dashboard/model/chat_user.dart';
+import 'package:developer_messenger/models/user.dart';
 import 'package:flutter/material.dart';
 
 class DashBoard extends StatelessWidget {
@@ -24,10 +27,17 @@ class ChatList extends StatefulWidget {
 class _ChatList extends State<StatefulWidget> {
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return SafeArea(
-        child: Column(
-      children: [ChatItem(), ChatItem(), ChatItem(), ChatItem()],
-    ));
+        child: ListView.builder(
+            itemCount: 6,
+            itemBuilder: (buildContext, index) {
+              return ChatListTile(
+                key: ValueKey(index),
+                chatUser: ChatUser("last message", DateTime.now(),
+                    User("name", "userId", "", "", "")),
+                onTab: () => Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => ChatBox())),
+              );
+            }));
   }
 }

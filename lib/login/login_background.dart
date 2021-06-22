@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class Background extends StatelessWidget {
-  Background({@required Widget child}) : this.child = child;
+class LoginBackground extends StatelessWidget {
+  LoginBackground({@required Widget child}) : this.child = child;
   final Widget child;
 
   @override
@@ -11,6 +11,7 @@ class Background extends StatelessWidget {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
+            mainAxisSize: MainAxisSize.max,
             children: [
               Center(
                 child: Container(
@@ -22,7 +23,9 @@ class Background extends StatelessWidget {
                           fit: BoxFit.fitWidth)),
                 ),
               ),
-              child
+              Container(
+                  margin: EdgeInsets.symmetric(horizontal: size.width * 0.1),
+                  child: child)
             ],
           ),
         ),

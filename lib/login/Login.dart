@@ -1,7 +1,7 @@
 import 'package:developer_messenger/dashboard/dashboard.dart';
 import 'package:flutter/material.dart';
 
-import 'Body.dart';
+import 'login_body.dart';
 
 class Login extends StatelessWidget {
   @override
@@ -11,7 +11,7 @@ class Login extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: Body(
+        home: LoginBody(
           onPressed: () {
             Navigator.push(
                 context, MaterialPageRoute(builder: (context) => DashBoard()));
